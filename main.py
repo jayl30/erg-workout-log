@@ -232,12 +232,12 @@ def show_split(state: State, distance: int, minutes: int, seconds: int) -> Page:
 #index
 assert_equal(index(State("Jayden", [], 0, "All")), Page(State("Jayden", [], 0, "All"), [
     Header("Erg Workout Log"),
-    "Welcome back, Jayden!",
+    "Welcome Back, Jayden!",
     "Your name:",
     TextBox("username", "Jayden"),
-    Button("Set name", save_name),
+    Button("Set Name", save_name),
     Button("Log a workout", log_workout),
-    Button("Workout history", view_history),
+    Button("Workout History", view_history),
     Button("Stats", view_stats),
     Button("Split calculator", calculator)
 ]))
@@ -249,16 +249,16 @@ assert_equal(save_name(State("", [], 0, "All"), "Jayden"),
 #log_workout
 assert_equal(log_workout(State("", [], 0, "All")), Page(State("", [], 0, "All"), [
     Header("Log a Workout"),
-    "Distance (meters):",
+    "Distance (Meters):",
     TextBox("distance"),
     "Time - minutes:",
     TextBox("minutes"),
     "Time - seconds:",
     TextBox("seconds"),
-    "Stroke rate (strokes per minute):",
+    "Stroke rate (per minute):",
     TextBox("stroke_rate"),
     "Workout type:",
-    SelectBox("workout_type", WORKOUT_TYPES),
+    SelectBox("workout_type", workout_types),
     Button("Save workout", save_workout),
     Button("Home", index)
 ]))
@@ -270,7 +270,7 @@ assert_equal(save_workout(State("", [], 470, "All"), 2000, 8, 0, 30, "Test"),
                  "Split: 2:00 /500m",
                  "Average watts: 203",
                  Button("Log another", log_workout),
-                 Button("Workout history", view_history),
+                 Button("Workout History", view_history),
                  Button("Home", index)
              ]))
 
@@ -283,7 +283,7 @@ assert_equal(view_history(State("", [Workout(2000, 480, 30, "Test"),
                  "Showing: Test",
                  "1. Test - 2000m in 8:00 (2:00 /500m, 30 spm)",
                  "Filter by type:",
-                 SelectBox("filter_type", FILTER_OPTIONS, "Test"),
+                 SelectBox("filter_type", filter_options, "Test"),
                  Button("Apply filter", apply_filter),
                  "Workout number to delete:",
                  TextBox("workout_num"),
